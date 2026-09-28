@@ -2,13 +2,13 @@ import con from "./conexão/connection.js";
 
 export async function ListarCliente(id) {
     let command = `
-    SELECT 
-    nome,
-    idade,
-    data_nasc,
-    estado,
-    cidade
-    FROM clientes
+       SELECT 
+            nome,
+            idade,
+            DATE_FORMAT(data_nasc, '%d/%m/%Y') AS dataDeNascimento,
+            estado,
+            cidade
+        FROM clientes
     WHERE id_cliente = ?
     `
 
@@ -18,13 +18,13 @@ export async function ListarCliente(id) {
 
 export async function ListarTodosClientes() {
     let command = `
-    SELECT 
-    nome,
-    idade,
-    data_nasc,
-    estado,
-    cidade
-    FROM clientes
+       SELECT 
+            nome,
+            idade,
+            data_nasc,
+            estado,
+            cidade
+        FROM clientes
     `
 
     let [linhas] = await con.query(command, []);
@@ -42,7 +42,7 @@ export async function NovoCliente(cliente) {
         cliente.idade,
         cliente.data_nasc,
         cliente.estado,
-        cliente.estado
+        cliente.cidade
     ])
 
     return result.insertId;

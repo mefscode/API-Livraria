@@ -10,8 +10,6 @@ export async function AllClientesService() {
 
 export async function ClienteService(id) {
 
-    ClientesValidation.ErroListarCliente(id)
-
     let resposta = await dbClientes.ListarCliente(id)
 
     return resposta;
