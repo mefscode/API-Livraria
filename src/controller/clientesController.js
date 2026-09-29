@@ -1,6 +1,12 @@
 import { Router } from "express";
 const endpoints = Router();
-import * as ServiceCliente from '../service/clientesService.js';
+import {
+    AllClientesService,
+    ClienteService,
+    NovoClienteService,
+    EditarClienteService,
+    ExcluirClienteService
+}from '../service/clientesService.js';
 import {
     ErroListarCliente,
     ErroCriarCliente,
@@ -13,7 +19,7 @@ import {
 endpoints.get('/clientes', async (req, resp) => {
     try {
 
-        let resposta = await ServiceCliente.AllClientesService()
+        let resposta = await AllClientesService()
 
         resp.send({
             resposta: resposta
@@ -31,7 +37,7 @@ endpoints.get('/clientes/:id', async (req, resp) => {
 
         ErroListarCliente(id);
 
-        let resposta = await ServiceCliente.ClienteService(id)
+        let resposta = await ClienteService(id)
 
         resp.send({
             resposta: resposta
@@ -49,7 +55,7 @@ endpoints.post('/clientes/criar', async (req, resp) => {
 
         ErroCriarCliente(cliente)
 
-        let resposta = await ServiceCliente.NovoClienteService(cliente)
+        let resposta = await NovoClienteService(cliente)
 
         resp.send({
             resposta: "Id do cliente: " + resposta
@@ -70,7 +76,7 @@ endpoints.put('/clientes/editar/:id', async (req, resp) => {
         ErroAtualizarCliente(id, cliente)
 
 
-        let resposta = await ServiceCliente.EditarClienteService(id, cliente)
+        let resposta = await EditarClienteService(id, cliente)
 
         resp.send({
             resposta: resposta
@@ -88,7 +94,7 @@ endpoints.delete('/clientes/excluir/:id', async (req, resp) => {
 
         ErroExcluirCliente(id)
 
-        let resposta = await ServiceCliente.ExcluirClienteService(id)
+        let resposta = await ExcluirClienteService(id)
 
         resp.send({
             resposta: "Qtd:" + resposta
