@@ -64,7 +64,7 @@ export async function EditarCliente(id, cliente) {
         cliente.idade,
         cliente.data_nasc,
         cliente.estado,
-        cliente.estado,
+        cliente.cidade,
         id
     ])
 
