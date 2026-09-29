@@ -1,0 +1,37 @@
+ENDPOINTS DA API LIVRARIA
+
+CLIENTES
+GET /clientes
+GET /clientes/4 (id)
+POST /clientes/criar
+Body: nome, idade, data_nasc, estado, cidade
+PUT /clientes/editar/4 (id)
+Body: nome, idade, data_nasc, estado, cidade
+DELETE /clientes/excluir/4 (id)
+
+LIVROS
+GET /livros
+GET /livro/4 (id)
+POST /livro/criar
+Body: titulo, genero, autor, preco, ano_pub
+PUT /livro/editar/4 (id)
+Body: titulo, genero, autor, preco, ano_pub
+DELETE /livro/excluir/4 (id)
+
+VENDAS
+GET /vendas
+GET /vendas/4 (id)
+POST /vendas/criar
+Body: id_cliente, data_venda
+PUT /vendas/editar/4 (id)
+Body: id_cliente, data_venda
+DELETE /vendas/excluir/4 (id)
+
+ITENS DA VENDA
+GET /vendas-itens
+GET /vendas-itens/4 (id)
+POST /vendas-itens/criar
+Body: id_venda, id_livro, quantidade, preco_unitario
+PUT /vendas-itens/editar/4 (id)
+Body: id_venda, id_livro, quantidade, preco_unitario
+DELETE /vendas-itens/excluir/4 (id)
